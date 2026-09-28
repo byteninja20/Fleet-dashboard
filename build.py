@@ -33,7 +33,7 @@ for _, r in d.sort_values('D').iterrows():
     v = s(r['Vehicle No.'])
     recs.append(dict(date=r['D'].strftime('%Y-%m-%d'), dateLabel=r['D'].strftime('%d %b'), day=s(r['Day']),
         vehicle=v, hub=s(r['Vehicle Hub']), brand=brand.get(v, ''), actual=s(r['Actual Driver']), scenario=sc,
-        earn=round(earn), exp=round(exp), trips=int(trips), mgRecv=round(mga if mg == 'no' else 0),
+        earn=round(earn), exp=round(exp), trips=int(trips), mgRecv=round(mga if s(r['MG Receivable']).lower() == 'awaited' else 0),
         platform=s(r['Platform']), remarks=s(r['Remarks']), fleet=v not in NON_FLEET))
 
 vehicles = []
